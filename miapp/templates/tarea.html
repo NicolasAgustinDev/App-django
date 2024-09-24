@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+
+<h1 class="text-center display-3 py-5">Tareas</h1>
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <ul class="list group ">
+                {% for tarea in tareas %}
+                <a class="list group-item" href="{% url 'tarea_detail' tarea.id %}">
+                    <header class="d-flex justify-content-between">
+                        <h2 class="fw-bold text success">{{tarea.nombre}} {% if tarea.done == False %} 🕐 {% else %} ✅ {% endif %} </h2>
+                        <p>Usuario: {{tarea.usuario}}</p>
+                    </header>
+                    <p>Descripcion: {{tarea.descripcion}}</p>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
+
